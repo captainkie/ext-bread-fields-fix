@@ -7,19 +7,16 @@ The package includes several additional FormFields:
 - **Key-Value to JSON**
 - **Multiple Images with tag attributes**
 - **Fix Multiple Fields on module**
-- **Fix Delete iamge issue**
-- **Fix Delete iamge issue**
+- **Fix Delete image issue**
 - **Test on Laravel 7.8.x & voyager 1.4**
 
 Over time, this list will be updated with new items.
 
-<!-- ## Installation
-
+## Installation
 You can use the artisan command below to install this hook
-
 ```bash
 php artisan hook:install ext-bread-fields-fix
-``` -->
+```
 
 ### Required
 ```bash
