@@ -18,7 +18,7 @@ Over time, this list will be updated with new items.
 You can use the artisan command below to install this hook
 
 ```bash
-php artisan hook:install extend-bread-fields-fix
+php artisan hook:install ext-bread-fields-fix
 ``` -->
 
 ### Required
