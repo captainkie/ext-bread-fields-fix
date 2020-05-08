@@ -5,13 +5,12 @@ namespace ExtendedBreadFormFieldsFix\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Http\Controllers\Controller;
-use TCG\Voyager\Http\Controllers\VoyagerBaseController;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use TCG\Voyager\Http\Controllers\VoyagerMediaController;
 
-class ExtendedBreadFormFieldsFixMediaController extends VoyagerBaseController
+class ExtendedBreadFormFieldsFixMediaController extends VoyagerMediaController
 {
-    public static function remove(Request $request)
+    
+    public function remove(Request $request)
     {
         if($request->get('multiple_ext')){
             try {
@@ -28,8 +27,11 @@ class ExtendedBreadFormFieldsFixMediaController extends VoyagerBaseController
                 $field = $request->get('field');
     
                 // GET THE DataType based on the slug
-								$dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-										
+                $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+    
+                // Check permission
+                Voyager::canOrFail('delete_'.$dataType->name);
+    
                 // Load model and find record
                 $model = app($dataType->model_name);
                 $data = $model::find([$id])->first();
@@ -52,7 +54,7 @@ class ExtendedBreadFormFieldsFixMediaController extends VoyagerBaseController
                         $founded = $i;
                 }
                 if(!isset($founded))
-										throw new Exception(__('voyager::media.image_does_not_exist'), 400);
+                    throw new Exception(__('voyager::media.image_does_not_exist'), 400);
                 
                 // Remove image from array
                 unset($fieldData[$founded]);
@@ -87,7 +89,7 @@ class ExtendedBreadFormFieldsFixMediaController extends VoyagerBaseController
                 ], $code);
             }
         } else{
-					VoyagerBaseController::remove_media($request);
+            VoyagerMediaController::remove($request);
         }
     }
 
