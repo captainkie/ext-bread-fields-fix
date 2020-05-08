@@ -1,5 +1,5 @@
 {
-    "name": "extended-bread-from-fields-fix",
+    "name": "extend-bread-fields-fix",
     "description": "Fix Issue Delete, Multiple fields Extended FormFields hook to Voyager BREAD",
     "tags": [
         "voyager",
