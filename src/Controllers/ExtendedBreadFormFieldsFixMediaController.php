@@ -5,7 +5,6 @@ namespace ExtendedBreadFormFieldsFix\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
-#use TCG\Voyager\Http\Controllers\VoyagerMediaController;
 use TCG\Voyager\Http\Controllers\Controller;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -29,11 +28,8 @@ class ExtendedBreadFormFieldsFixMediaController extends VoyagerBaseController
                 $field = $request->get('field');
     
                 // GET THE DataType based on the slug
-                $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-    
-                // Check permission
-								# Voyager::canOrFail('delete_'.$dataType->name);
-		
+								$dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+										
                 // Load model and find record
                 $model = app($dataType->model_name);
                 $data = $model::find([$id])->first();
@@ -57,10 +53,6 @@ class ExtendedBreadFormFieldsFixMediaController extends VoyagerBaseController
                 }
                 if(!isset($founded))
 										throw new Exception(__('voyager::media.image_does_not_exist'), 400);
-										
-										var_dump($fieldData );
-										var_dump($founded );
-										die;
                 
                 // Remove image from array
                 unset($fieldData[$founded]);

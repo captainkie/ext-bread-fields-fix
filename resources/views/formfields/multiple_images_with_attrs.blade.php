@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function(){
 		@foreach($images as $k=>$image)
 			$('.remove-multi-image-ext.{{ $row->field }}-{{ $k }}').on('click', function (e) {
 					e.preventDefault();
-					console.log($(this));
 					$file = $(this).parent().siblings('img');
 
 					params = {
@@ -49,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function(){
 			
 			$('.show-inputs.{{ $row->field }}-{{ $k }}').on('click', function (e) {
 					e.preventDefault();
-					console.log($(this));
 					$(this).parent().parent().children('.form-group').toggle();
 			});
 		@endforeach
