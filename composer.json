@@ -1,6 +1,6 @@
 {
     "name": "ext-bread-fields-fix",
-    "description": "Fix Issue Delete, Multiple fields Extended FormFields hook to Voyager BREAD",
+    "description": "Fix Issue Delete, Multiple fields Extended FormFields",
     "tags": [
         "voyager",
         "FormField",
